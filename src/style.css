@@ -1,0 +1,158 @@
+/* General */
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background-color: #121212; /* Fondo oscuro */
+  color: #e0e0e0; /* Texto claro */
+}
+
+#app {
+  padding: 20px;
+}
+
+/* Contenedor de películas - Mobile First */
+.movie-container {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(
+    1,
+    1fr
+  ); /* Una tarjeta por fila en dispositivos móviles */
+}
+
+/* Tarjeta de película */
+.movie-card {
+  background-color: #1e1e1e; /* Fondo más claro */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  height: auto; /* Deja que la altura sea dinámica */
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+}
+
+.movie-card img {
+  width: 100%;
+  aspect-ratio: 2 / 3; /* Proporción estándar para pósters */
+  object-fit: cover; /* Ajusta la imagen para llenar el espacio sin distorsionarse */
+}
+
+.movie-card h2 {
+  font-size: 1.2em;
+  margin: 10px;
+  color: #ffffff;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.movie-card p {
+  font-size: 0.9em;
+  margin: 10px;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.movie-card .overview {
+  white-space: normal;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.movie-card .release-date,
+.movie-card .rating {
+  font-size: 0.8em;
+  margin: 10px;
+  color: #a0a0a0;
+}
+
+/* Contenedor de categoría */
+.select-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.select-container label {
+  margin-right: 10px;
+  font-size: 1.1em;
+}
+
+.select-container select {
+  padding: 5px 10px;
+  background-color: #1e1e1e;
+  border: 1px solid #3a3a3a;
+  color: #e0e0e0;
+  border-radius: 4px;
+  outline: none;
+}
+
+.select-container select:hover {
+  border-color: #ffffff;
+}
+
+/* Paginación */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination-container button {
+  background-color: #1e1e1e;
+  border: 1px solid #3a3a3a;
+  color: #e0e0e0;
+  padding: 5px 15px;
+  margin: 0 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pagination-container button:hover:not(:disabled) {
+  background-color: #292929;
+}
+
+.pagination-container button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.pagination-container span {
+  font-size: 1em;
+  margin: 0 10px;
+}
+
+/* Media Queries */
+
+/* Tableta: dos tarjetas por fila */
+@media (min-width: 768px) {
+  .movie-container {
+    grid-template-columns: repeat(2, 1fr); /* Dos tarjetas por fila */
+  }
+
+  .movie-card img {
+    aspect-ratio: 2 / 3; /* Mantiene la proporción del póster */
+  }
+}
+
+/* PC: cuatro tarjetas por fila */
+@media (min-width: 1024px) {
+  .movie-container {
+    grid-template-columns: repeat(4, 1fr); /* Cuatro tarjetas por fila */
+  }
+
+  .movie-card img {
+    aspect-ratio: 2 / 3; /* Proporción constante */
+  }
+}
